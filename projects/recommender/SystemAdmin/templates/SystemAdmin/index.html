@@ -1,0 +1,140 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'movies/style.css' %}">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Recommender</title>
+</head>
+<!doctype html>
+<html lang="en">
+
+<body class="body">
+
+    <div class="container" style="margin-left:180px;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:cadetblue; width:1203px;">
+            <a class="navbar-brand" href="#" style="font-size:50px;"><i class="fa fa-cube"></i>Movie<b>World</b></a>
+            
+        </nav>
+    </div>
+     <ul>
+            {% for finalpred in Finalpredictions %}
+        <li>{{finalpred.MovieID}}</li>
+        <li>{{finalpred.MovieID}}</li>
+        <li>{{finalpred.Title}}</li>
+        <li>{{finalpred.Genres}}</li>
+        {%endfor%}
+    </ul> 
+ 
+    <div class="row" style="margin-left:800px;">
+        <div class="col-12 col-md-8"></div>
+        <div class="col-6 col-md-4"><a class="col-5" href="{% url 'logout' %}" >Log out</a></div>
+      </div>
+    <div style="margin-left:200px; width:1200px; padding-top:40px;">
+        <nav class="navbar navbar-default navbar-light" style="background-color:cadetblue">
+            <div class="navbar-header">
+               <a href="#" class="navbar-brand"> Collaborative Filtering</a>
+            </div>
+        </nav>
+    </div>
+  
+    <div class="table-responsive" style="width:1200px; padding-top:10px; margin-left:200px; ">
+        <table class="table table-bordered table-condensed table-hover" style="background:#fff;
+	position:relative;
+	transition:0.3s all linear;
+	box-shadow:5px 5px 3px #808080;
+	top:0px;">
+            <thead style="text-align:center; margin:5px; background-color: gainsboro">
+                <tr class="info">
+                    <th>MOVIES TITLE</th>
+                    <th>MEAN RATING</th>
+                    <th>MOVIE ID</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for recommendedMovie in recommendationsystem %}
+                <tr class="success">
+                    <td style="width:200px;">{{recommendedMovie.movietitle}}</td>
+                    <td style="width:400px;">{{recommendedMovie.meanrating}}</td>
+                    <td style="width:420px;">{{recommendedMovie.movieid}}</td>                  
+                </tr>
+            </tbody>
+            {%endfor%}
+
+        </table>
+    </div>
+
+    <div style="margin-left:200px; width:1200px; padding-top:40px;">
+            <nav class="navbar navbar-default navbar-light" style="background-color:cadetblue">
+                <div class="navbar-header">
+                   <a href="#" class="navbar-brand">Simple Recommender system</a>
+                </div>
+            </nav>
+        </div>
+    <div class="table-responsive" style="width:1200px; padding-top:10px; margin-left:200px; ">
+        <table class="table table-bordered table-condensed table-hover" style="background:#fff;
+	position:relative;
+	transition:0.3s all linear;
+	box-shadow:5px 5px 3px #808080;
+	top:0px;">
+            <thead style="text-align:center; margin:5px; background-color: gainsboro">
+                <tr class="info">
+                    <th>MOVIE TITLE</th>
+                    <th>RATING</th>
+                    <th>TOTAL MOVIES RATED</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in movies %}
+                <tr class="success">
+                    <td style="width:420px;">{{movie.title}}</td>
+                    <td style="width:400px;">{{movie.rating}}</td>
+                    <td style="width:200px;">{{movie.total}}</td>
+
+                </tr>
+            </tbody>
+            {%endfor%}
+
+        </table>
+    
+        
+        <div style="margin-bottom:10px;">
+            <img src="../../static/movies/images/Movie2.jpg" alt="Action" width="400" height="400">
+            <img src="../../static/movies/images/Movie7.jpeg" alt="Action" width="350" height="350">
+            <img src="../../static/movies/images/Movie9.jpeg" alt="Action" width="250" height="250">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue"
+        style="background-color:gray; margin-top:20px; margin-left:200px; margin-right:100px; margin-bottom: 20px;">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/"> Nankai University</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+li a {
+    color: green;
+}
+body {
+ /*    background: white url("images/Movie5.jpg") repeat; */
+    padding-top: 40px;
+}
+card1 {
+    padding-top: 40px;
+
+}
+.buy {
+	background:rgba(0,0,0,0.2);
+}
